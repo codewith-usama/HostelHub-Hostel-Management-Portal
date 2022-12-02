@@ -1,5 +1,5 @@
-<?php 
-  session_start(); 
+<?php
+  session_start();
 
   if (!isset($_SESSION['hostel_id'])) {
   	$_SESSION['msg'] = "You must log in first";
@@ -8,7 +8,7 @@
   if (isset($_GET['logout'])) {
   	session_destroy();
   	unset($_SESSION['hostel_id']);
-  	header("location: login.php");
+  	header("location: student_warden_login.php");
   }
 ?>
 <!DOCTYPE html>
@@ -28,8 +28,8 @@
   	<?php if (isset($_SESSION['success'])) : ?>
       <div class="error success" >
       	<h3>
-          <?php 
-          	echo $_SESSION['success']; 
+          <?php
+          	echo $_SESSION['success'];
           	unset($_SESSION['success']);
           ?>
       	</h3>
@@ -51,7 +51,7 @@
 	  <a class="btn btn-primary" href="bills.php" role="button">Billing</a>
 	  <br></br>
 	  <a class="btn btn-primary" href="view_admitted_students.php" role="button">View Admitted Students</a>
-	  <br></br>	 
+	  <br></br>
     	<p> <a href="admin_portal.php?logout='1'" style="color: red;">logout</a> </p>
     <?php endif ?>
 </div>

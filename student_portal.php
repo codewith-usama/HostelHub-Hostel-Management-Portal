@@ -1,5 +1,5 @@
-<?php 
-  session_start(); 
+<?php
+  session_start();
 
   if (!isset($_SESSION['roll_no'])) {
   	$_SESSION['msg'] = "You must log in first";
@@ -8,7 +8,7 @@
   if (isset($_GET['logout'])) {
   	session_destroy();
   	unset($_SESSION['roll_no']);
-  	header("location: login.php");
+  	header("location: student_warden_login.php");
   }
 ?>
 <!DOCTYPE html>
@@ -28,8 +28,8 @@
   	<?php if (isset($_SESSION['success'])) : ?>
       <div class="error success" >
       	<h3>
-          <?php 
-          	echo $_SESSION['success']; 
+          <?php
+          	echo $_SESSION['success'];
           	unset($_SESSION['success']);
           ?>
       	</h3>
@@ -40,9 +40,9 @@
     <?php  if (isset($_SESSION['roll_no'])) : ?>
     	<p>Welcome <strong><?php echo $_SESSION['roll_no']; ?>
 		<br></br><br></br>
-	
+
 	</strong></p>
-		
+
 		<p>
       <a class="btn btn-primary" href="rent_status.php" role="button">Check Rent Status</a>
 	  <br></br>
@@ -52,7 +52,7 @@
 	  <br></br>
 	  <a class="btn btn-primary" href="add_rem_facilities.php" role="button">Add Remove Facilities</a>
 	  <br></br>	  <br></br>
-		
+
 	</p>
     	<p> <a href="student_portal.php?logout='1'" style="color: red;">logout</a> </p>
     <?php endif ?>

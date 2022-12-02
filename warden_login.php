@@ -4,13 +4,14 @@
 <head>
   <title>Warden Login</title>
   <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="shortcut icon" href="favicon.ico">
 </head>
 <body>
   <div class="header">
   	<h2>Warden Login</h2>
   </div>
-	 
-  <form method="post" action="login.php">
+
+  <form method="post" action="admin_portal.php">
   	<?php include('errors.php'); ?>
   	<div class="input-group">
   		<label>Username</label>
