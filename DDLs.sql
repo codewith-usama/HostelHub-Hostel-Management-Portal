@@ -247,3 +247,5 @@ DROP TABLE facilities_availed;
 DROP TABLE accounts;
 DROP TABLE room_details;
 DROP TABLE complaints;
+
+#END
