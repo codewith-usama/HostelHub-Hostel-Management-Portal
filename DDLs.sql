@@ -25,14 +25,6 @@ CREATE TABLE hostel_details(
     password VARCHAR(50) NOT NULL,
     CONSTRAINT pk_hostel_details PRIMARY KEY (hostel_id)
 );
- 
-CREATE TABLE room_details(
-    hostel_id VARCHAR(4) NOT NULL,
-    room_no INT NOT NULL,
-    floor_no INT NOT NULL,
-    CONSTRAINT pk_room_details PRIMARY KEY (hostel_id, room_no)
-);
-
 CREATE TABLE facilities(
     facility_id INT,
     facility_name VARCHAR(20) NOT NULL UNIQUE,
@@ -130,13 +122,6 @@ INSERT INTO `facilities_available`(`facility_id`, `hostel_id`) VALUES ('202','H2
 INSERT INTO `facilities_available`(`facility_id`, `hostel_id`) VALUES ('303','H202');
 INSERT INTO `facilities_available`(`facility_id`, `hostel_id`) VALUES ('404','H202');
 
-#Room Details
-
-INSERT INTO `room_details`(`hostel_id`, `room_no`,`floor_no`) VALUES ('H101','4',1);
-INSERT INTO `room_details`(`hostel_id`, `room_no`,`floor_no`) VALUES ('H101','2',2);
-INSERT INTO `room_details`(`hostel_id`, `room_no`,`floor_no`) VALUES ('H202','7',3);
-INSERT INTO `room_details`(`hostel_id`, `room_no`,`floor_no`) VALUES ('H202','4',4);;
-
 #Student Details
 
 INSERT INTO `student_details`(`roll_no`, `CNIC`, `first_name`, `last_name`, `hostel_id`, `student_rep`, `phone_no`, `guardian_name`, `address`,`password`,`room_no`) VALUES ('k201055','441055','Mohsin','Shah','H101',NULL,'03353875769','Anwar','Sector 17A','81dc9bdb52d04dc20036dbd8313ed055','4');
@@ -155,7 +140,6 @@ INSERT INTO `facilities_availed`(`roll_no`, `hostel_id`, `facility_id`) VALUES (
 INSERT INTO `facilities_availed`(`roll_no`, `hostel_id`, `facility_id`) VALUES ('k201051','H101','303');
 INSERT INTO `facilities_availed`(`roll_no`, `hostel_id`, `facility_id`) VALUES ('k201051','H101','404');
 INSERT INTO `facilities_availed`(`roll_no`, `hostel_id`, `facility_id`) VALUES ('k201754','H202','202');
-INSERT INTO `facilities_availed`(`roll_no`, `hostel_id`, `facility_id`) VALUES ('k201754','H303','303');
 
 #Accounts
 
@@ -180,20 +164,8 @@ ALTER TABLE student_details
 ADD CONSTRAINT fk_hostel_id_student_details 
 FOREIGN KEY (hostel_id) REFERENCES hostel_details(hostel_id) ON DELETE CASCADE ON UPDATE CASCADE;
 
-ALTER TABLE student_details 
-ADD CONSTRAINT fk_room_no_student_details 
-FOREIGN KEY (room_no) REFERENCES room_details(room_no) ON DELETE CASCADE ON UPDATE CASCADE;
-
-ADD CONSTRAINT sr_student_rep_student_details
+alter table student_details ADD CONSTRAINT sr_student_rep_student_details
 FOREIGN KEY (student_rep) REFERENCES student_details(roll_no) ON DELETE CASCADE ON UPDATE CASCADE;
-
-ALTER TABLE room_details
-ADD CONSTRAINT fk_hostel_id_room_details
-FOREIGN KEY (hostel_id) REFERENCES hostel_details(hostel_id) ON DELETE CASCADE ON UPDATE CASCADE;
-
-ALTER TABLE room_details
-ADD CONSTRAINT fk_roll_no_room_details
-FOREIGN KEY (roll_no) REFERENCES student_details(roll_no) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE facilities_available
 ADD CONSTRAINT fk_facility_id_available
