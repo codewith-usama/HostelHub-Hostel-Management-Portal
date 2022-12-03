@@ -8,7 +8,7 @@
   if (isset($_GET['logout'])) {
   	session_destroy();
   	unset($_SESSION['hostel_id']);
-  	header("location: student_warden_login.php");
+  	header("location: login.php");
   }
 ?>
 <!DOCTYPE html>
@@ -18,8 +18,9 @@
 
     <title>HOSTEL MANAGMENT SYSTEM</title>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <!-- <link rel="stylesheet" href="style.css"> -->
     <link rel="stylesheet" href="student-login.css">
-    <link rel="stylesheet" href="css-for-warden.css">
+    <link rel="stylesheet" href="test-css-for-warden.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <body>

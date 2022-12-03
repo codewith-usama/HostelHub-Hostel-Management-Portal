@@ -1,6 +1,6 @@
 <?php include('server.php') ?>
-<?php 
-  #session_start(); 
+<?php
+  #session_start();
 
   if (!isset($_SESSION['hostel_id'])) {
   	$_SESSION['msg'] = "You must log in first";
@@ -15,14 +15,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Registration system PHP and MySQL</title>
+  <title>REGISTER STUDENT | HOSTEL MANAGMENT SYSTEM</title>
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
   <div class="header">
   	<h2>Student Register</h2>
   </div>
-	
+
   <form method="post" action="register.php">
   	<?php include('errors.php'); ?>
 
@@ -46,7 +47,7 @@
   	  <input type="text" name="last_name" value="<?php echo $last_name; ?>">
   	</div>
 
-  	
+
 	<div class="input-group">
 		<label>Student Representative: </label>
 		<input type="text" name="student_rep" value="<?php echo $student_rep; ?>">
@@ -64,7 +65,7 @@
   	  <label>Guardian Name</label>
   	  <input type="text" name="guardian_name" value="<?php echo $guardian_name; ?>">
   	</div>
-	
+
 	<div class="input-group">
   	  <label>Address</label>
   	  <input type="text" name="address" value="<?php echo $address; ?>">

@@ -3,14 +3,14 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>HOSTEL MANAGMENT SYSTEM</title>
+    <title>LOGIN | HOSTEL MANAGMENT SYSTEM</title>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <!-- <link rel="stylesheet" href="style.css"> -->
     <link rel="stylesheet" href="student-login.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <body>
-    <img src="student-bg.jpg" class="bg"alt="HOSTEL Image">
+    <img src="student-bg.jpg" class="bg" alt="HOSTEL Image">
     <div class="wrapper">
       <div class="title-text">
         <div class="title login">Login</div>

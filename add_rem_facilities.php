@@ -1,5 +1,5 @@
-<?php 
-  session_start(); 
+<?php
+  session_start();
   $Add=0;
   $db = new mysqli('localhost', 'root', '', 'project');
   if (!isset($_SESSION['roll_no'])) {
@@ -38,17 +38,17 @@
             $db->query($Add_facility_query);
             echo "Facility Added Succesfully";
             //billing portion
-            $bill_query="UPDATE accounts A 
+            $bill_query="UPDATE accounts A
             SET A.rent_amount = (
                 SELECT SUM(F.facility_cost) + H.base_rent AS total_rent
                 FROM accounts A, hostel_details H, facilities_availed FA, facilities F
                 WHERE A.hostel_id = H.hostel_id AND FA.roll_no = A.roll_no AND FA.facility_id = F.facility_id AND A.roll_no = '$id')
             WHERE A.roll_no = '$id';";
-                $db->query($bill_query);                   
+                $db->query($bill_query);
         }
         else{echo "This facility is not available in this hostel!";}
 
-            
+
     }
     if(isset($_GET['form_facility_remove']))
     {
@@ -76,7 +76,7 @@
             $rem_facility="DELETE FROM facilities_availed where roll_no='$id' AND facility_id='$req_facility';";
             $db->query($rem_facility);
             echo "Facility Removed Succesfully";
-            $bill_query="UPDATE accounts A 
+            $bill_query="UPDATE accounts A
             SET A.rent_amount = (
                 SELECT SUM(F.facility_cost) + H.base_rent AS total_rent
                 FROM accounts A, hostel_details H, facilities_availed FA, facilities F
@@ -91,12 +91,13 @@
 
         }
     }
-  
+
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Home</title>
+  <title>ADD/REMOVE FACILITES | HOSTEL MANAGMENT SYSTEM</title>
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
@@ -135,7 +136,7 @@
         {
             echo "No Facilities are available in your hostel";
         }
-        
+
     ?>
 </table>
 <br>

@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="about-style.css">
   <link rel="shortcut icon" href="favicon.ico">
   <script src="https://kit.fontawesome.com/830a36410b.js" crossorigin="anonymous"></script>
-  <title>HOSTEL MANAGMENT</title>
+  <title>HOME | HOSTEL MANAGMENT</title>
 </head>
 
 <body>
