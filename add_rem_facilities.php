@@ -54,7 +54,7 @@
     {
         $id=$_SESSION['roll_no'];
         $req_facility=$_GET['form_facility_remove'];
-
+        $Add = 1;
         $hostel_id_query="SELECT hostel_id from student_details where roll_no='$id'";
         $hostel_id=$db->query($hostel_id_query);
         $hostel_id=$hostel_id->fetch_assoc()['hostel_id'];

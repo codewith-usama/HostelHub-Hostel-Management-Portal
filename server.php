@@ -71,7 +71,7 @@ if (isset($_POST['reg_user'])) {
     //CALL `check_room_no`(@p0, @p1, @p2, @p3);
     $procode_query="CALL `check_room_no`('$max_room','$roll_no','$cnic','$first_name', '$last_name', '$hostel_id', '$room_no', '$student_rep', '$phone_no', '$guardian_name', '$address', '$password');";
     mysqli_query($db,$procode_query);
-    if(mysqli_affected_rows($db)) {
+    if(mysqli_affected_rows($db) > 1) {
       echo "SUCCESS!";
     }
     else {
