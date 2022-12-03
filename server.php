@@ -17,7 +17,7 @@ $password_1 = "";
 $password_2 = "";
 $room_no="";
 
-$errors = array(); 
+$errors = array();
 
 // connect to the database
 $db = mysqli_connect('localhost', 'root', '', 'project');
@@ -45,12 +45,12 @@ if (isset($_POST['reg_user'])) {
 	array_push($errors, "The two passwords do not match");
   }
 
-  // first check the database to make sure 
+  // first check the database to make sure
   // a user does not already exist with the same username and/or email
   $user_check_query = "SELECT * FROM student_details WHERE roll_no='$roll_no' OR cnic='$cnic' LIMIT 1";
   $result = mysqli_query($db, $user_check_query);
   $user = mysqli_fetch_assoc($result);
-  
+
   if ($user) { // if user exists
     if ($user['roll_no'] === $roll_no) {
       array_push($errors, "Roll No already exists");
@@ -77,7 +77,7 @@ if (isset($_POST['reg_user'])) {
     else {
       echo "Error!";
     }
-    
+
   }
 }
 
