@@ -79,22 +79,31 @@ END; //
 DELIMITER //  
 CREATE OR REPLACE PROCEDURE check_room_no(  
     max_rooms INT,
-    room_assigned INT,
+	roll_no VARCHAR(7),
+    CNIC VARCHAR(13),
+    first_name VARCHAR(20),
+    last_name VARCHAR(20),
     hostel_id VARCHAR(4),
-    roll_no VARCHAR(7)
+    room_no INT,
+    student_rep VARCHAR(7),
+    phone_no VARCHAR(11),
+    guardian_name VARCHAR(40),
+    address VARCHAR(50),
+    password VARCHAR(32)
 )
 MODIFIES SQL DATA
-BEGIN  
+BEGIN
     DECLARE room_occupents_amt INT;
     
     SELECT COUNT(room_no)
     INTO room_occupents_amt
-    FROM room_details RD
-    WHERE RD.hostel_id = hostel_id AND RD.room_no = room_assigned;
+    FROM student_details SD
+    WHERE RD.room_no = room_no;
     
-    IF max_rooms >= room_assigned THEN
-        INSERT INTO room_details VALUES(hostel_id, room_assigned, roll_no);
-    END IF;  
+    IF room_occupents_amt < 2 AND room_no < max_rooms THEN
+    	INSERT INTO student_details VALUES(roll_no, CNIC, first_name, last_name, hostel_id, room_no, student_rep, phone_no, guardian_name, address, NULL, password);
+    END IF;
+  
 END; //
 
 
@@ -153,8 +162,6 @@ INSERT INTO `accounts`(`roll_no`, `hostel_id`, `rent_amount`, `due_date`, `statu
 INSERT INTO `complaints`(`roll_no`, `hostel_id`, `facility_id`, `comments`, `complaint_status`) VALUES ('k201055','H101','101','Low Quality','0');
 INSERT INTO `complaints`(`roll_no`, `hostel_id`, `facility_id`, `comments`, `complaint_status`) VALUES ('k201051','H101','202','Slow Speed','0');
 INSERT INTO `complaints`(`roll_no`, `hostel_id`, `facility_id`, `comments`, `complaint_status`) VALUES ('k201754','H202','404','No Cooling','0');
-
-
 
 
 
