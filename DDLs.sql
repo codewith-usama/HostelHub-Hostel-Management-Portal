@@ -40,7 +40,6 @@ CREATE TABLE facilities_available(
 
 CREATE TABLE facilities_availed(
     roll_no VARCHAR(7) NOT NULL,
-    hostel_id VARCHAR(4) NOT NULL,
     facility_id INT NOT NULL,
     CONSTRAINT pk_facilities_availed PRIMARY KEY (roll_no, facility_id)
 );
@@ -141,14 +140,14 @@ INSERT INTO `student_details`(`roll_no`, `CNIC`, `first_name`, `last_name`, `hos
 
 #Facilities Availed
 
-INSERT INTO `facilities_availed`(`roll_no`, `hostel_id`, `facility_id`) VALUES ('k201055','H101','101');
-INSERT INTO `facilities_availed`(`roll_no`, `hostel_id`, `facility_id`) VALUES ('k201055','H101','202');
-INSERT INTO `facilities_availed`(`roll_no`, `hostel_id`, `facility_id`) VALUES ('k201055','H101','303');
-INSERT INTO `facilities_availed`(`roll_no`, `hostel_id`, `facility_id`) VALUES ('k201051','H101','101');
-INSERT INTO `facilities_availed`(`roll_no`, `hostel_id`, `facility_id`) VALUES ('k201051','H101','202');
-INSERT INTO `facilities_availed`(`roll_no`, `hostel_id`, `facility_id`) VALUES ('k201051','H101','303');
-INSERT INTO `facilities_availed`(`roll_no`, `hostel_id`, `facility_id`) VALUES ('k201051','H101','404');
-INSERT INTO `facilities_availed`(`roll_no`, `hostel_id`, `facility_id`) VALUES ('k201754','H202','202');
+INSERT INTO `facilities_availed`(`roll_no`,  `facility_id`) VALUES ('k201055','101');
+INSERT INTO `facilities_availed`(`roll_no`, `facility_id`) VALUES ('k201055','202');
+INSERT INTO `facilities_availed`(`roll_no`, `facility_id`) VALUES ('k201055','303');
+INSERT INTO `facilities_availed`(`roll_no`, `facility_id`) VALUES ('k201051','101');
+INSERT INTO `facilities_availed`(`roll_no`, `facility_id`) VALUES ('k201051','202');
+INSERT INTO `facilities_availed`(`roll_no`, `facility_id`) VALUES ('k201051','303');
+INSERT INTO `facilities_availed`(`roll_no`, `facility_id`) VALUES ('k201051','404');
+INSERT INTO `facilities_availed`(`roll_no`, `facility_id`) VALUES ('k201754','202');
 
 #Accounts
 
@@ -185,10 +184,6 @@ FOREIGN KEY (hostel_id) REFERENCES hostel_details(hostel_id) ON DELETE CASCADE O
 ALTER TABLE facilities_availed
 ADD CONSTRAINT fk_roll_no_availed
 FOREIGN KEY (roll_no) REFERENCES student_details(roll_no) ON DELETE CASCADE ON UPDATE CASCADE;
-
-ALTER TABLE facilities_availed
-ADD CONSTRAINT fk_hostel_id_availed
-FOREIGN KEY (hostel_id) REFERENCES hostel_details(hostel_id) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE facilities_availed
 ADD CONSTRAINT fk_facility_id_availed
