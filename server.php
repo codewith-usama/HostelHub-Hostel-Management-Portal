@@ -65,21 +65,19 @@ if (isset($_POST['reg_user'])) {
   if (count($errors) == 0) {
   	$password = md5($password_1);//encrypt the password before saving in the database
     $hostel_id = $_SESSION['hostel_id'];
-  	$query = "INSERT INTO student_details (roll_no, CNIC, first_name, last_name, hostel_id, student_rep, phone_no, guardian_name, address, join_date, password) 
-  			  VALUES('$roll_no', '$cnic','$first_name','$last_name','$hostel_id','$student_rep','$phone_no','$guardian_name','$address','', '$password')";
-  	if(empty($student_rep))
-    {
-      $query = "INSERT INTO student_details (roll_no, CNIC, first_name, last_name, hostel_id, student_rep, phone_no, guardian_name, address, join_date, password) 
-  			  VALUES('$roll_no', '$cnic','$first_name','$last_name','$hostel_id',NULL,'$phone_no','$guardian_name','$address','', '$password')";   
-    }
-    mysqli_query($db, $query);
     $max_room="SELECT total_rooms from hostel_details where hostel_id='$hostel_id';";
     $max_room = mysqli_query($db,$max_room);
     $max_room= $max_room->fetch_object()->total_rooms;
     //CALL `check_room_no`(@p0, @p1, @p2, @p3);
-    $procode_query="CALL `check_room_no`('$max_room','$room_no','$hostel_id','$roll_no');";
+    $procode_query="CALL `check_room_no`('$max_room','$roll_no','$cnic','$first_name', '$last_name', '$hostel_id', '$room_no', '$student_rep', '$phone_no', '$guardian_name', '$address', '$password');";
     mysqli_query($db,$procode_query);
-    echo "SUCCESS!";
+    if(mysqli_affected_rows($db)) {
+      echo "SUCCESS!";
+    }
+    else {
+      echo "Error!";
+    }
+    
   }
 }
 

@@ -1,6 +1,6 @@
 <?php include('complaint_html.php') ?>
 <?php 
-  session_start(); 
+  #session_start(); 
 
   if (!isset($_SESSION['roll_no'])) {
   	$_SESSION['msg'] = "You must log in first";
@@ -16,7 +16,7 @@
   $do_it=0;
   if ($_POST['submit'])
   {
-    $facility_set_query="SELECT facility_id from facilities_availed where roll_no='$id' AND hostel_id = '$hostel_id';";
+    $facility_set_query="SELECT facility_id from facilities_availed where roll_no='$id';";
     $output=$db->query($facility_set_query);
     if($output->num_rows>0)
     {
