@@ -58,8 +58,8 @@ CREATE TABLE accounts(
     hostel_id VARCHAR(4),
 	rent_amount INT NOT NULL,
     due_date DATE NOT NULL,
-    status VARCHAR(4) NOT NULL,
-    CONSTRAINT pk_accounts PRIMARY KEY (roll_no)
+    status VARCHAR(10) NOT NULL,
+    CONSTRAINT pk_accounts PRIMARY KEY (roll_no,due_date)
 );
 
 CREATE TABLE complaints(
@@ -108,19 +108,10 @@ END; //
 
 #Data Insertions
 
-#Accounts
+#Hostel Details
 
-INSERT INTO `accounts`(`roll_no`, `hostel_id`, `rent_amount`, `due_date`, `status`) VALUES ('k201055','H101','20000','2022-12-15','0');
-INSERT INTO `accounts`(`roll_no`, `hostel_id`, `rent_amount`, `due_date`, `status`) VALUES ('k201051','H101','18000','2022-12-15','0');
-INSERT INTO `accounts`(`roll_no`, `hostel_id`, `rent_amount`, `due_date`, `status`) VALUES ('k201754','H202','23000','2022-12-15','0');
-
-
-#Complaints
-
-INSERT INTO `complaints`(`roll_no`, `hostel_id`, `facility_id`, `comments`, `complaint_status`) VALUES ('k201055','H101','101','Low Quality','0');
-INSERT INTO `complaints`(`roll_no`, `hostel_id`, `facility_id`, `comments`, `complaint_status`) VALUES ('k201051','H101','202','Slow Speed','0');
-INSERT INTO `complaints`(`roll_no`, `hostel_id`, `facility_id`, `comments`, `complaint_status`) VALUES ('k201754','H202','404','No Cooling','0');
-
+INSERT INTO `hostel_details`(`hostel_id`, `hostel_name`, `address`, `total_rooms`, `base_rent`, `password`) VALUES ('H101','United','Sector 17A','20','13000','81dc9bdb52d04dc20036dbd8313ed055');
+INSERT INTO `hostel_details`(`hostel_id`, `hostel_name`, `address`, `total_rooms`, `base_rent`, `password`) VALUES ('H202','Paradise','Sector 17B','10','7000','81dc9bdb52d04dc20036dbd8313ed055');
 
 #Facilities
 
@@ -128,7 +119,6 @@ INSERT INTO `facilities`(`facility_id`, `facility_name`, `facility_cost`) VALUES
 INSERT INTO `facilities`(`facility_id`, `facility_name`, `facility_cost`) VALUES ('202','WiFi','1500');
 INSERT INTO `facilities`(`facility_id`, `facility_name`, `facility_cost`) VALUES ('303','attach_bath','3000');
 INSERT INTO `facilities`(`facility_id`, `facility_name`, `facility_cost`) VALUES ('404','AC','4000');
-
 
 #Facilities Available
 
@@ -140,6 +130,20 @@ INSERT INTO `facilities_available`(`facility_id`, `hostel_id`) VALUES ('202','H2
 INSERT INTO `facilities_available`(`facility_id`, `hostel_id`) VALUES ('303','H202');
 INSERT INTO `facilities_available`(`facility_id`, `hostel_id`) VALUES ('404','H202');
 
+#Room Details
+
+INSERT INTO `room_details`(`hostel_id`, `room_no`,`floor_no`) VALUES ('H101','4',1);
+INSERT INTO `room_details`(`hostel_id`, `room_no`,`floor_no`) VALUES ('H101','2',2);
+INSERT INTO `room_details`(`hostel_id`, `room_no`,`floor_no`) VALUES ('H202','7',3);
+INSERT INTO `room_details`(`hostel_id`, `room_no`,`floor_no`) VALUES ('H202','4',4);;
+
+#Student Details
+
+INSERT INTO `student_details`(`roll_no`, `CNIC`, `first_name`, `last_name`, `hostel_id`, `student_rep`, `phone_no`, `guardian_name`, `address`,`password`,`room_no`) VALUES ('k201055','441055','Mohsin','Shah','H101',NULL,'03353875769','Anwar','Sector 17A','81dc9bdb52d04dc20036dbd8313ed055','4');
+INSERT INTO `student_details`(`roll_no`, `CNIC`, `first_name`, `last_name`, `hostel_id`, `student_rep`, `phone_no`, `guardian_name`, `address`,`password`,`room_no`) VALUES ('k201051','441051','Ali','Ashber','H101','k201055','03003344667','some_name','Rizvia','81dc9bdb52d04dc20036dbd8313ed055','4');
+INSERT INTO `student_details`(`roll_no`, `CNIC`, `first_name`, `last_name`, `hostel_id`, `student_rep`, `phone_no`, `guardian_name`, `address`,`password`,`room_no`) VALUES ('k201754','441754','Khuzaima','Khan','H202','k201055','03334567123','some_name','Sector 15B','81dc9bdb52d04dc20036dbd8313ed055','7');
+INSERT INTO `student_details`(`roll_no`, `CNIC`, `first_name`, `last_name`, `hostel_id`, `student_rep`, `phone_no`, `guardian_name`, `address`,`password`,`room_no`) VALUES ('k200190','440190','Usama','Khan','H202','k201055','03445267312','some_name','Sector 16G','81dc9bdb52d04dc20036dbd8313ed055','4');
+INSERT INTO `student_details`(`roll_no`, `CNIC`, `first_name`, `last_name`, `hostel_id`, `student_rep`, `phone_no`, `guardian_name`, `address`,`password`,`room_no`) VALUES ('k214577','444577','Anas','Khan','H202','k201055','03356712984','some_name','North Karachi','81dc9bdb52d04dc20036dbd8313ed055','7');
 
 #Facilities Availed
 
@@ -153,27 +157,21 @@ INSERT INTO `facilities_availed`(`roll_no`, `hostel_id`, `facility_id`) VALUES (
 INSERT INTO `facilities_availed`(`roll_no`, `hostel_id`, `facility_id`) VALUES ('k201754','H202','202');
 INSERT INTO `facilities_availed`(`roll_no`, `hostel_id`, `facility_id`) VALUES ('k201754','H303','303');
 
+#Accounts
 
-#Hostel Details
+INSERT INTO `accounts`(`roll_no`, `hostel_id`, `rent_amount`, `due_date`, `status`) VALUES ('k201055','H101','20000','2022-12-15','UNPAID');
+INSERT INTO `accounts`(`roll_no`, `hostel_id`, `rent_amount`, `due_date`, `status`) VALUES ('k201051','H101','18000','2022-12-15','UNPAID');
+INSERT INTO `accounts`(`roll_no`, `hostel_id`, `rent_amount`, `due_date`, `status`) VALUES ('k201754','H202','23000','2022-12-15','UNPAID');
 
-INSERT INTO `hostel_details`(`hostel_id`, `hostel_name`, `address`, `total_rooms`, `base_rent`, `password`) VALUES ('H101','United','Sector 17A','20','13000','81dc9bdb52d04dc20036dbd8313ed055');
-INSERT INTO `hostel_details`(`hostel_id`, `hostel_name`, `address`, `total_rooms`, `base_rent`, `password`) VALUES ('H202','Paradise','Sector 17B','10','7000','81dc9bdb52d04dc20036dbd8313ed055');
+
+#Complaints
+
+INSERT INTO `complaints`(`roll_no`, `hostel_id`, `facility_id`, `comments`, `complaint_status`) VALUES ('k201055','H101','101','Low Quality','0');
+INSERT INTO `complaints`(`roll_no`, `hostel_id`, `facility_id`, `comments`, `complaint_status`) VALUES ('k201051','H101','202','Slow Speed','0');
+INSERT INTO `complaints`(`roll_no`, `hostel_id`, `facility_id`, `comments`, `complaint_status`) VALUES ('k201754','H202','404','No Cooling','0');
 
 
-#Room Details
 
-INSERT INTO `room_details`(`hostel_id`, `room_no`, `roll_no`) VALUES ('H101','4','k201055');
-INSERT INTO `room_details`(`hostel_id`, `room_no`, `roll_no`) VALUES ('H101','4','k201051');
-INSERT INTO `room_details`(`hostel_id`, `room_no`, `roll_no`) VALUES ('H202','7','k201754');
-INSERT INTO `room_details`(`hostel_id`, `room_no`, `roll_no`) VALUES ('H202','4','k200190');
-
-#Student Details
-
-INSERT INTO `student_details`(`roll_no`, `CNIC`, `first_name`, `last_name`, `hostel_id`, `student_rep`, `phone_no`, `guardian_name`, `address`,`password`) VALUES ('k201055','441055','Mohsin','Shah','H101',NULL,'03353875769','Anwar','Sector 17A','81dc9bdb52d04dc20036dbd8313ed055');
-INSERT INTO `student_details`(`roll_no`, `CNIC`, `first_name`, `last_name`, `hostel_id`, `student_rep`, `phone_no`, `guardian_name`, `address`,`password`) VALUES ('k201051','441051','Ali','Ashber','H101','k201055','03003344667','some_name','Rizvia','81dc9bdb52d04dc20036dbd8313ed055');
-INSERT INTO `student_details`(`roll_no`, `CNIC`, `first_name`, `last_name`, `hostel_id`, `student_rep`, `phone_no`, `guardian_name`, `address`,`password`) VALUES ('k201754','441754','Khuzaima','Khan','H202','k201055','03334567123','some_name','Sector 15B','81dc9bdb52d04dc20036dbd8313ed055');
-INSERT INTO `student_details`(`roll_no`, `CNIC`, `first_name`, `last_name`, `hostel_id`, `student_rep`, `phone_no`, `guardian_name`, `address`,`password`) VALUES ('k200190','440190','Usama','Khan','H202','k201055','03445267312','some_name','Sector 16G','81dc9bdb52d04dc20036dbd8313ed055');
-INSERT INTO `student_details`(`roll_no`, `CNIC`, `first_name`, `last_name`, `hostel_id`, `student_rep`, `phone_no`, `guardian_name`, `address`,`password`) VALUES ('k214577','444577','Anas','Khan','H202','k201055','03356712984','some_name','North Karachi','81dc9bdb52d04dc20036dbd8313ed055');
 
 
 #FK Constraints
@@ -186,7 +184,7 @@ ALTER TABLE student_details
 ADD CONSTRAINT fk_room_no_student_details 
 FOREIGN KEY (room_no) REFERENCES room_details(room_no) ON DELETE CASCADE ON UPDATE CASCADE;
 
-SADD CONSTRAINT sr_student_rep_student_details
+ADD CONSTRAINT sr_student_rep_student_details
 FOREIGN KEY (student_rep) REFERENCES student_details(roll_no) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE room_details
