@@ -34,7 +34,7 @@
         {
             $checking_query="SELECT * FROM facilities_availed where roll_no='$id';";
             $output=$db->query($checking_query);
-            $Add_facility_query="Insert into facilities_availed values ('$id','$hostel_id','$req_facility');";
+            $Add_facility_query="Insert into facilities_availed values ('$id','$req_facility');";
             $db->query($Add_facility_query);
             echo "Facility Added Succesfully";
             //billing portion
@@ -108,7 +108,7 @@
 </div>
 <div class="content">
 <table>
-    <h4>All Available Facilities in your Hostel</h4><br><br>
+    <h4>All Available Facilities in your Hostel</h4>
     <tr>
       <th>Facility ID</th>
       <th>Facility Name</th>
@@ -139,6 +139,32 @@
 
     ?>
 </table>
+
+<br><br><h4>All Facilities availed by you.</h4>
+<table>
+    <tr>
+      <th>Facility ID</th>
+      <th>Facility Name</th>
+      <th>Facility Cost</th>
+    </tr>
+    <?php
+        $id=$_SESSION['roll_no'];
+        $query = "SELECT * FROM facilities_availed inner join facilities on  facilities_availed.facility_id=facilities.facility_id WHERE facilities_availed.roll_no='$id'";
+        $results = $db->query($query);
+        if($results->num_rows > 0)
+        {
+          while($row = $results->fetch_assoc())
+          {
+            echo "<tr>";
+            //echo "Roll No: " . $row['roll_no']. " - hostel ID:".$row['hostel_id']."- Due Date: ". $row['due_date']." Status: ".$row['status'];
+            echo "<td>".$row['facility_id']."</td>";
+            echo "<td>".$row['facility_name']."</td>";
+            echo "<td>".$row['facility_cost']."</td>";
+            echo "</tr>";
+          }
+        }
+    ?>
+</table>    
 <br>
 <br>
     <form action="add_rem_facilities.php" method="get">

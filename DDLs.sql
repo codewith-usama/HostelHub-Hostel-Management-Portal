@@ -73,6 +73,13 @@ BEGIN
   SET NEW.join_date = SYSDATE();
 END; //
 
+DELIMITER //
+CREATE OR REPLACE TRIGGER add_due_Date BEFORE INSERT ON accounts
+FOR EACH ROW
+BEGIN
+  SET NEW.due_date = DATE_ADD(SYSDATE(), INTERVAL 10 DAY);
+END; //
+
 #Procedure
 
 DELIMITER //  
@@ -99,7 +106,7 @@ BEGIN
     FROM student_details SD
     WHERE RD.room_no = room_no;
     
-    IF room_occupents_amt < 2 AND room_no < max_rooms THEN
+    IF room_occupents_amt < 1 AND room_no < max_rooms THEN
     	INSERT INTO student_details VALUES(roll_no, CNIC, first_name, last_name, hostel_id, room_no, student_rep, phone_no, guardian_name, address, NULL, password);
     END IF;
   
