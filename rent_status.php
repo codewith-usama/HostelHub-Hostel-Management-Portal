@@ -52,6 +52,8 @@
           }
         }
     ?>
+    </table>
+    <a class="btn" href="https://buy.stripe.com/test_cN20140Olc0b6C4aEE">Pay Rent</a>
 </div>
 </body>
 </html>
