@@ -321,7 +321,7 @@ p {
 	background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
 }
 #footer .footer {
-	min-height: 100px;
+	min-height: 300px;
 	flex-direction: column;
 	padding-top: 50px;
 	padding-bottom: 30px;
@@ -502,4 +502,30 @@ p {
 
 .login-text {
 	color: red;
+}
+
+
+.services-bg {
+	height: 200%;
+	width: 200%;
+}
+
+
+
+.google-map {
+	position: absolute;
+	align-items: left;
+	flex-direction: column;
+	padding-left: 900px
+}
+iframe {
+	width: 120%;
+	height: 200px;
+}
+
+.footer-icon {
+  margin: 20px 10px;
+}
+.media {
+	padding-top: 50px;
 }

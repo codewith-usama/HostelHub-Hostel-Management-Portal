@@ -7,10 +7,13 @@
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <!-- <link rel="stylesheet" href="style.css"> -->
     <link rel="stylesheet" href="student-login.css">
+    <script src="https://kit.fontawesome.com/830a36410b.js" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <body>
+
     <img src="student-bg.jpg" class="bg" alt="HOSTEL Image">
+
     <div class="wrapper">
       <div class="title-text">
         <div class="title login">Login</div>

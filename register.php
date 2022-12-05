@@ -19,8 +19,8 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
-<body>
-  <div class="header">
+<body  style="background-color: #c7d3d4ff">
+<div class="header" style="background-color: #a445b2;">
   	<h2>Student Register</h2>
   </div>
 

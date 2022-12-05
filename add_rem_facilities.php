@@ -101,9 +101,8 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
-<body>
-
-<div class="header">
+<body  style="background-color: #c7d3d4ff">
+<div class="header" style="background-color: #a445b2;">
 	<h2>Add Or Remove Facilities</h2>
 </div>
 <div class="content">
@@ -164,7 +163,7 @@
           }
         }
     ?>
-</table>    
+</table>
 <br>
 <br>
     <form action="add_rem_facilities.php" method="get">
