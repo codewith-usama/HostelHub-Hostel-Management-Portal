@@ -44,10 +44,7 @@
             echo "<td>".$row['hostel_id']."</td>";
             echo "<td>".$row['rent_amount']."</td>";
             echo "<td>".$row['due_date']."</td>";
-
-            if($row['status'] == 0){$rent_status="Unpaid";}
-            else{$rent_status="Paid";}
-            echo "<td>" .$rent_status. "</td>";
+            echo "<td>".$row['status']."</td>";
             echo "</tr>";
           }
         }
