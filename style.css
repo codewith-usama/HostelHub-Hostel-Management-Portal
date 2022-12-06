@@ -57,6 +57,14 @@ form, .content {
   border: none;
   border-radius: 5px;
 }
+.pay_btn {
+  padding: 10px;
+  font-size: 15px;
+  color: white;
+  background: #5F9EA0;
+  border: none;
+  border-radius: 10px;
+}
 .error {
   width: 92%;
   margin: 0px auto;

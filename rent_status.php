@@ -45,12 +45,13 @@
             echo "<td>".$row['rent_amount']."</td>";
             echo "<td>".$row['due_date']."</td>";
             echo "<td>".$row['status']."</td>";
+            echo "<td style = \"padding 15px\"><a class=\"pay_btn\" href=\"https://buy.stripe.com/test_cN20140Olc0b6C4aEE\">Pay Rent</a></td>";
             echo "</tr>";
           }
         }
     ?>
     </table>
-    <a class="btn" href="https://buy.stripe.com/test_cN20140Olc0b6C4aEE">Pay Rent</a>
+    
 </div>
 </body>
 </html>
