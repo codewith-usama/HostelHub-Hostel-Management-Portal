@@ -1,7 +1,7 @@
 # Database-Project
 
 # 1.  Make a clone in C->xampp->htdocs
-      command git clone https://github.com/epiicuree/Database-Project
+      git clone https://github.com/epiicuree/Database-Project
 
 # 2.  Make a database at http://localhost/phpmyadmin/ named "project"
 
